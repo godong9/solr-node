@@ -1,6 +1,6 @@
 declare module 'solr-node' {
   class Client {
-    constructor(options: Client.ClientOptions);
+    constructor(options: Client.ClientOptions | string);
 
     query(): Client.Query;
 

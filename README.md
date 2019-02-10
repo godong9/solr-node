@@ -33,6 +33,10 @@ var client = new SolrNode({
     protocol: 'http'
 });
 
+// or
+
+var client = new SolrNode('http://127.0.0.1:8983/solr/test');
+
 // Set logger level (can be set to DEBUG, INFO, WARN, ERROR, FATAL or OFF)
 require('log4js').getLogger('solr-node').level = 'DEBUG';
 ```
