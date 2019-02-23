@@ -166,13 +166,7 @@ describe('Client', function() {
       //when
       var client = new Client(options);
       //then
-      expect(client.options).to.eql({
-        host: '127.0.0.1',
-        port: '8983',
-        core: '',
-        rootPath: 'solr',
-        protocol: 'http'
-      });
+      expect(client.solrEndpointUrl).to.eql('http://127.0.0.1:8983/solr/');
     });
 
     it('should create client when core:"test".', function() {
@@ -183,13 +177,16 @@ describe('Client', function() {
       //when
       var client = new Client(options);
       //then
-      expect(client.options).to.eql({
-        host: '127.0.0.1',
-        port: '8983',
-        core: 'test',
-        rootPath: 'solr',
-        protocol: 'http'
-      });
+      expect(client.solrEndpointUrl).to.eql('http://127.0.0.1:8983/solr/test');
+    });
+
+    it('should create client when solr endpoint given as a string', function() {
+      //given
+      var options = 'http://test.com/solr/test';
+      //when
+      var client = new Client(options);
+      //then
+      expect(client.solrEndpointUrl).to.eql('http://test.com/solr/test');
     });
   });
 
