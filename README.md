@@ -33,14 +33,8 @@ var client = new SolrNode({
     protocol: 'http'
 });
 
-// Set Debug Level
-var client = new SolrNode({
-    host: '127.0.0.1',
-    port: '8983',
-    core: 'test',
-    protocol: 'http',
-    debugLevel: 'ERROR' // log4js debug level paramter
-});
+// Set logger level (can be set to DEBUG, INFO, WARN, ERROR, FATAL or OFF)
+require('log4js').getLogger('solr-node').level = 'DEBUG';
 ```
 
 ### Search
@@ -182,6 +176,17 @@ var result = solrClient.search(query)
     .catch(function(err) {
       console.error(err);
     });
+```
+
+You can also use `async`/`await`:
+
+```js
+try {
+   const result = await solrClient.search(query);
+   console.log('Response:', result.response);
+} catch(e) {
+   console.error(err);
+}
 ```
 
 ## Test & Coverage & Docs
