@@ -122,7 +122,7 @@ declare module 'solr-node' {
       accuracy?: number;
     }
 
-    interface SuggestParams {
+    interface SuggestQueryParams {
       on?: boolean;
       q: string;
       build?: boolean;
