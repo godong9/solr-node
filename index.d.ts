@@ -25,7 +25,7 @@ declare module 'solr-node' {
       start(params: string | number): this;
       rows(params: string | number): this;
       sort(params: object): this;
-      fq(params: object | object[]): this;
+      fq(params: FilterQueryParam | FilterQueryParam[]): this;
       df(params: string): this;
       wt(params: string): this;
       addParams(params: Array<{ field: string; value: any }>): this;
@@ -185,6 +185,11 @@ declare module 'solr-node' {
       regexPattern?: string;
       regexMaxAnalyzedChars?: number;
       preserveMulti?: boolean;
+    }
+
+    interface FilterQueryParam {
+      field: string;
+      value: string | number;
     }
   }
 
