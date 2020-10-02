@@ -25,7 +25,7 @@ declare module 'solr-node' {
       start(params: string | number): this;
       rows(params: string | number): this;
       sort(params: object): this;
-      fq(params: string): this;
+      fq(params: object | object[]): this;
       df(params: string): this;
       wt(params: string): this;
       addParams(params: Array<{ field: string; value: any }>): this;
