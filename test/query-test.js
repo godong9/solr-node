@@ -249,6 +249,34 @@ describe('Query', function() {
       expect(query.params).to.eql([ 'fq=10', 'fq=hate%3A10' ]);
     });
 
+    it('should reset fq params when setParam is called.', function() {
+      //given
+      var testQuery = new Query();
+      var params = [{field: 'what', value:'10'}, {field:'ever', value:10}];
+      //when
+      var query = testQuery.fq(params);
+      //then
+      expect(query.params).to.eql([ 'fq=what%3A10', 'fq=ever%3A10' ]);
+
+      query.setParam({ field: 'fq', value: 'year:2019'})
+      
+      expect(query.params).to.eql([ 'fq=year%3A2019' ]);
+
+      query.unsetParam('fq')
+
+      query.fq({ field: 'year', value: '2019'})
+
+      expect(query.params).to.eql([ 'fq=year%3A2019' ]);
+
+      query.addParams([{ field: 'd', value: '10' }])
+
+      expect(query.params).to.eql([ 'fq=year%3A2019', 'd=10' ]);
+
+      query.unsetParam('fq')
+      
+      expect(query.params).to.eql([ 'd=10' ]);
+    });
+
     it('should get empty params when params is null.', function() {
       //given
       var testQuery = new Query();
