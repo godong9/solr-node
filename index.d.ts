@@ -5,6 +5,7 @@ declare module 'solr-node' {
     query(): Client.Query;
 
     search<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
+    suggest<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
     terms<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
     mlt<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
     spell<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
@@ -52,6 +53,7 @@ declare module 'solr-node' {
         start: number;
         docs: T[];
       };
+      suggest?: T[any];
       nextCursorMark?: string;
     }
 
@@ -122,7 +124,7 @@ declare module 'solr-node' {
       accuracy?: number;
     }
 
-    interface SuggestParams {
+    interface SuggestQueryParams {
       on?: boolean;
       q: string;
       build?: boolean;
