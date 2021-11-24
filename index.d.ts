@@ -1,4 +1,4 @@
-declare module "@aerian-studios/solr-node" {
+declare module "solr-node" {
   class Client {
     constructor(options: Client.ClientOptions);
 
