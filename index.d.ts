@@ -39,7 +39,7 @@ declare module "solr-node" {
       start(params: string | number): this;
       rows(params: string | number): this;
       sort(params: object): this;
-      fq(params: string): this;
+      fq(params: object[] | object): this;
       df(params: string): this;
       wt(params: string): this;
       addParams(params: Array<{ field: string; value: any }>): this;
@@ -55,17 +55,42 @@ declare module "solr-node" {
       toString(): string;
     }
 
+    export interface SolrFacetCounts {
+      facet_queries: { [index: string]: number };
+      facet_fields?: { [index: string]: Array<string | number> };
+      facet_ranges?: object;
+      facet_intervals?: object;
+      facet_heatmaps?: object;
+    }
+
+    export interface SolrGroupedGroupItem<T> {
+      groupValue: string;
+      doclist: {
+        numFound: number;
+        start: number;
+        numFoundExact?: boolean;
+        docs: T[];
+      };
+    }
+
+    export interface SolrGroupedResponseGroup<T> {
+      matches: number;
+      groups: SolrGroupedGroupItem<T>[];
+    }
+
     export interface SolrResponse<T> {
       responseHeader: {
         status: number;
         QTime: number;
         params: object;
       };
-      response: {
+      response?: {
         numFound: number;
         start: number;
         docs: T[];
       };
+      grouped?: { [index: string]: SolrGroupedResponseGroup<T> };
+      facet_counts?: SolrFacetCounts;
       nextCursorMark?: string;
     }
 
@@ -79,6 +104,8 @@ declare module "solr-node" {
 
     interface UpdateOptions {
       commit?: boolean;
+      commitWithin?: number;
+      softCommit?: boolean;
     }
 
     interface TermsQueryParams {
@@ -136,7 +163,7 @@ declare module "solr-node" {
       accuracy?: number;
     }
 
-    interface SuggestParams {
+    interface SuggestQueryParams {
       on?: boolean;
       q: string;
       build?: boolean;
