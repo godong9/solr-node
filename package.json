@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/godong9/solr-node.git"
+    "url": "git+https://github.com/aerian-studios/solr-node.git"
   },
   "keywords": [
     "solr",
@@ -21,9 +21,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/godong9/solr-node/issues"
+    "url": "https://github.com/aerian-studios/solr-node/issues"
   },
-  "homepage": "https://github.com/godong9/solr-node/wiki",
+  "homepage": "https://github.com/aerian-studios/solr-node/wiki",
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",

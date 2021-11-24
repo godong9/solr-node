@@ -1,15 +1,29 @@
-declare module 'solr-node' {
+declare module "solr-node" {
   class Client {
     constructor(options: Client.ClientOptions);
 
     query(): Client.Query;
 
-    search<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
-    terms<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
-    mlt<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
-    spell<R extends object>(query: Client.Query | string): Promise<Client.SolrResponse<R>>;
-    update<R extends object>(data: object, options?: Client.UpdateOptions): Promise<Client.SolrResponse<R>>;
-    delete<R extends object>(query?: Client.Query | string, options?: Client.UpdateOptions): Promise<Client.SolrResponse<R>>;
+    search<R extends object>(
+      query: Client.Query | string
+    ): Promise<Client.SolrResponse<R>>;
+    terms<R extends object>(
+      query: Client.Query | string
+    ): Promise<Client.SolrResponse<R>>;
+    mlt<R extends object>(
+      query: Client.Query | string
+    ): Promise<Client.SolrResponse<R>>;
+    spell<R extends object>(
+      query: Client.Query | string
+    ): Promise<Client.SolrResponse<R>>;
+    update<R extends object>(
+      data: object,
+      options?: Client.UpdateOptions
+    ): Promise<Client.SolrResponse<R>>;
+    delete<R extends object>(
+      query?: Client.Query | string,
+      options?: Client.UpdateOptions
+    ): Promise<Client.SolrResponse<R>>;
     ping<R extends object>(): Promise<Client.SolrResponse<R>>;
     commit<R extends object>(): Promise<Client.SolrResponse<R>>;
     softCommit<R extends object>(): Promise<Client.SolrResponse<R>>;
@@ -142,7 +156,7 @@ declare module 'solr-node' {
       offset?: number;
       mincount?: number;
       missing?: boolean;
-      method?: 'enum' | 'fc' | 'fcs';
+      method?: "enum" | "fc" | "fcs";
     }
 
     interface GroupQueryParams {
