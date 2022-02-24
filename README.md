@@ -32,7 +32,8 @@ var client = new SolrNode({
     host: '127.0.0.1',
     port: '8983',
     core: 'test',
-    protocol: 'http'
+    protocol: 'http',
+    requestHandler: 'search' //OPTIONAL
 });
 
 // Set logger level (can be set to DEBUG, INFO, WARN, ERROR, FATAL or OFF)
