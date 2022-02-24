@@ -100,6 +100,7 @@ declare module "solr-node" {
       core?: string;
       rootPath?: string;
       protocol?: string;
+      requestHandler?: string;
     }
 
     interface UpdateOptions {
