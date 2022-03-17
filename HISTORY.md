@@ -86,3 +86,7 @@
 ### 1.2.6
 
     * Add timeout to fetch
+
+### 1.2.7
+
+    * Bump node fetch version number to 2.6.1
