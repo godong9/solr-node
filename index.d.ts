@@ -89,6 +89,11 @@ declare module "solr-node" {
         start: number;
         docs: T[];
       };
+      error?: {
+        metadata: string[];
+        msg: "string";
+        code: number;
+      };
       grouped?: { [index: string]: SolrGroupedResponseGroup<T> };
       facet_counts?: SolrFacetCounts;
       nextCursorMark?: string;
